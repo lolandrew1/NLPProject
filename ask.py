@@ -9,10 +9,12 @@ user = sys.argv[3]
 
 lines = parser.parse_file(file)
 
+# documentation on tags: https://stanfordnlp.github.io/stanza/data_objects.html#sentence
 tags = stanza_pipeline.tag(lines)
 
-for tag in tags:
-  print(tag)
+sentences = tags.sentences
+
+print(sentences[0].constituency)
 
 
 
