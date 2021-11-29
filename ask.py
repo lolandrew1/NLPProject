@@ -10,11 +10,15 @@ user = sys.argv[3]
 lines = parser.parse_file(file)
 
 # documentation on tags: https://stanfordnlp.github.io/stanza/data_objects.html#sentence
-tags = stanza_pipeline.tag(lines)
+doc = stanza_pipeline.tag(lines)
 
-sentences = tags.sentences
+binQs = stanza_pipeline.getBinQs(doc)
 
-print(sentences[0].constituency)
+for binQ in binQs:
+  #print(binQ)
+  break
+
+
 
 
 
