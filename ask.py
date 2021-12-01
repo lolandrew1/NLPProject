@@ -2,19 +2,22 @@
 import sys  
 import parser
 import stanza_pipeline
+import ranker
 
 file = sys.argv[1]
 numQs = int(sys.argv[2])
-user = sys.argv[3]
 
 lines = parser.parse_file(file)
 
-# documentation on tags: https://stanfordnlp.github.io/stanza/data_objects.html#sentence
+questions = stanza_pipeline.getQs(lines)
 
-binQs = stanza_pipeline.getQs(lines)
+finalQuestions = ranker.rank(questions, numQs)
 
-for binQ in binQs:
-  print(binQ)
+for question in finalQuestions:
+  print(question)
+
+
+
 
 
 
